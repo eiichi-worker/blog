@@ -16,7 +16,8 @@ timezone: Asia/Tokyo
 # root: /blog/
 url: http://blog.noraneko.work
 root: /
-permalink: :year/:month/:day/:title/
+# permalink: :year/:month/:day/:title/
+permalink: :title/
 permalink_defaults:
 
 # Directory
