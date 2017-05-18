@@ -74,3 +74,6 @@ deploy:
   type: git
   repo: https://github.com/eiichi-worker/blog.git
   branch: gh-pages
+
+
+disqus_shortname: ji-shu-hasheng-mono
