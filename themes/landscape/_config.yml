@@ -2,11 +2,12 @@
 menu:
   Home: /
   Archives: /archives
+  GitHub Gist: https://gist.github.com/eiichi-worker
   Tools: /tools
 rss: /atom.xml
 
 # Content
-excerpt_link: Read More
+excerpt_link: 続きを読む
 fancybox: true
 
 # Sidebar
@@ -30,7 +31,7 @@ show_count: false
 
 # Miscellaneous
 google_analytics: UA-88871107-1
-favicon: /favicon.png
+favicon: /favicon.ico
 twitter:
 google_plus:
 fb_admins:
