@@ -79,5 +79,13 @@ deploy:
   repo: https://github.com/eiichi-worker/blog.git
   branch: gh-pages
 
+marked:
+#   gfm: true #  GitHub flavored markdownを有効
+#   tables: true # GFM tablesを有効にします
+  breaks: false # 改行を<br>に変換しない
+#   pedantic: true # 可能な限り markdown.pl に準拠します
+#   sanitize: false # 入力されたHTMLを無視(サニタイズ)します。
+#   smartLists: true
+#   smartypants: false
 
 disqus_shortname: ji-shu-hasheng-mono
