@@ -88,6 +88,6 @@ date: 2017-05-11 01:38:58
     <tr>
         <td id="output_from_datetime"></td>
         <td id="output_to_timestamp"></td>
-        <td><button class="copy_btn" data-clipboard-target="#output_realtime">クリップボードにコピー</button></td>
+        <td><button class="copy_btn" data-clipboard-target="#output_to_timestamp">クリップボードにコピー</button></td>
     </tr>
 </table>
