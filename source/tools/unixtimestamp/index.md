@@ -67,3 +67,27 @@ date: 2017-05-11 01:38:58
         <td><button class="copy_btn" data-clipboard-target="#format_jst_06">クリップボードにコピー</button></td>
     </tr>
 </table>
+
+日時をUnixtimestampに変換
+---
+<div>
+    <input type="date" id="from_date" value=""></input>
+    <input type="time" id="from_time" value="" step="1"></input>
+    <button onclick="toTimestamp()">変換</button>
+</div>
+<div>
+    <input type="number" id="add_num" value="0"></input>
+    <button onclick="add('days')">日後</button>
+    <button onclick="add('hours')">時間後</button>
+    <button onclick="add('minutes')">分後</button>
+</div>
+<table>
+    <tr>
+        <th colspan="3">変換後のタイムスタンプ</th>
+    </tr>
+    <tr>
+        <td id="output_from_datetime"></td>
+        <td id="output_to_timestamp"></td>
+        <td><button class="copy_btn" data-clipboard-target="#output_realtime">クリップボードにコピー</button></td>
+    </tr>
+</table>
