@@ -1,3 +1,6 @@
+### 準備
+npm i -g hexo
+
 ### サーバー起動
 hexo server
 
