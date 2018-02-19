@@ -9,3 +9,8 @@ hexo new [タイトル]
 
 ### deploy
 hexo deploy -g
+
+
+導入プラグイン
+---
+- [AMP HTMLを自動生成するプラグインを作った。HexoでAMPを導入する | TPB](https://photo-tea.com/p/published-hexo-generator-amp/)
