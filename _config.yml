@@ -89,3 +89,17 @@ marked:
 #   smartypants: false
 
 disqus_shortname: ji-shu-hasheng-mono
+
+# hexo-generator-amp
+generator_amp:
+  templateDir: themes-amp
+  assetDistDir: amp-dist
+  logo:
+    path: sample/sample-logo.png
+    width: 600
+    height: 60
+  substituteTitleImage:
+    path: sample/sample-substituteTitleImage.png
+    width: 1024
+    height: 800
+  warningLog: false

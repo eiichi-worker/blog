@@ -35,6 +35,10 @@
   <%- partial('google-analytics') %>
   <meta name="google-site-verification" content="kG_gz2xi42noxcKTmrJ2c3y4Yeq_U1THAd0ZMh__hMM" />
 
+  <% if (is_post() && config.generator_amp){ %>
+  <link rel="amphtml" href="<%= config.url %>/<%= page.path %>/amp/index.html">
+  <% } %>
+
   <!-- Juicer Tags -->
   <script src="//kitchen.juicer.cc/?color=H90bxK9zVRY=" async></script>
 
