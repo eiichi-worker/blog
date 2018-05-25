@@ -2,8 +2,10 @@
 menu:
   Home: /
   Archives: /archives
-  GitHub Gist: https://gist.github.com/eiichi-worker
   Tools: /tools
+  GitHub: https://github.com/eiichi-worker
+  その他メモ（Gist）: https://gist.github.com/eiichi-worker
+  AI実験場: http://ai.noraneko.work/
 rss: /atom.xml
 
 # Content
