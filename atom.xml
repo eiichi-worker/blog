@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>技術は生もの</title>
+  
+  <subtitle>早めに食べよう</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://blog.noraneko.work/"/>
+  <updated>2018-06-19T15:11:51.690Z</updated>
+  <id>https://blog.noraneko.work/</id>
+  
+  <author>
+    <name>eiichi-worker</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VS Codeの神拡張機能「Visual Studio Live Share」のご紹介</title>
+    <link href="https://blog.noraneko.work/2018-05-26-001/"/>
+    <id>https://blog.noraneko.work/2018-05-26-001/</id>
+    <published>2018-05-25T15:00:00.000Z</published>
+    <updated>2018-06-19T15:11:51.690Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><!-- TOC insertAnchor:true --><ul><li><a href="#はじめに">はじめに</a></li><li><a href="#visual-studio-live-share-とは">Visual Studio Live Share とは</a></li><li><a href="#導入編">導入編</a><ul><li><a href="#拡張機能vs-live-shareをインストール">拡張機能「VS Live Share」をインストール</a></li><li><a href="#vs-live-shareにサインインする">VS Live Shareにサインインする</a></li></ul></li><li><a href="#vs-live-shareを使ってみる">VS Live Shareを使ってみる</a><ul><li><a href="#自分の環境をシェアするときホスト">自分の環境をシェアするとき(ホスト)</a></li><li><a href="#他人の環境に参加するときゲスト">他人の環境に参加するとき(ゲスト)</a></li></ul></li><li><a href="#おわり">おわり</a></li><li><a href="#参考リンク">参考リンク</a></li></ul><!-- /TOC --><p><a id="markdown-はじめに" name="はじめに"></a></p><h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p><strong>Visual Studio Live Share</strong> がパブリックプレビューになってました！<br>誰でも利用可能です!  </p><ul><li><a href="https://www.visualstudio.com/ja/services/live-share/" target="_blank" rel="noopener">Visual Studio Live Share | Visual Studio</a></li><li><a href="https://jp.techcrunch.com/2018/05/08/2018-05-07-live-share-in-visual-studio-lets-you-code-and-debug-together/" target="_blank" rel="noopener">Visual Studioの協業機能、Live Shareが一般公開。デバッグセッションも共有可能 | TechCrunch Japan</a></li></ul><p>完全に見逃してました。<br>VSCode使いとして恥ずかしい限りです。<br>（de:codeを仕事しながらちら見してて何かやってんなーとは思ってたんですよね。。。）<br>気を取り直して  </p><p><a id="markdown-visual-studio-live-share-とは" name="visual-studio-live-share-とは"></a></p><h2 id="Visual-Studio-Live-Share-とは"><a href="#Visual-Studio-Live-Share-とは" class="headerlink" title="Visual Studio Live Share とは"></a>Visual Studio Live Share とは</h2><p>↑のリンクを見てもらえば一目瞭然ですが  </p><p><span style="font-size: 200%">リアルタイムにソースコードを共同編集できる機能です!</span>  </p><p>VS Code もしくは VisualStudioをお使いならプラグインを入れるだけで使えます。<br>もちろん無料です。<br>ピンときてない方は公式の動画を見てみてください（英語）  </p><iframe width="560" height="315" src="https://www.youtube.com/embed/ui_rzsDWLqs?start=138" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><p>どうですか？</p><ul><li>リモートでペアプロできる</li><li>後輩などから「うごかないっす！」って言われたときにリンク貰えばその人の環境でコードとターミナルまでリアルタイムに確認・編集・操作できる</li><li>↑ は自分が困ったときに見てもらうのにも有効ですね</li><li>単なる画面共有ではありません！ 自分の環境のVSCodeで他人のコードをいじれます！</li><li>なんとソースだけでなくターミナルも共有できます</li><li>更にローカルで確認用に立ててるサーバーも共有可能です（localhost:3000」とか）</li></ul><p>つづきから↓導入方法（VSCodeのみ）です。</p><a id="more"></a><p><a id="markdown-導入編" name="導入編"></a></p><h2 id="導入編"><a href="#導入編" class="headerlink" title="導入編"></a>導入編</h2><p>対象</p><ul><li>VSCode<ul><li>VSCodeは最新版にしておきましょう</li><li>対応OS → Windows (7, 8.1, or 10) or macOS (Sierra+ only), or 64-bit Linux (see details)</li></ul></li></ul><p><a id="markdown-拡張機能vs-live-shareをインストール" name="拡張機能vs-live-shareをインストール"></a></p><h3 id="拡張機能「VS-Live-Share」をインストール"><a href="#拡張機能「VS-Live-Share」をインストール" class="headerlink" title="拡張機能「VS Live Share」をインストール"></a>拡張機能「VS Live Share」をインストール</h3><p>拡張機能をインストールしましょう<br>この作業は初回の1回のみです  </p><ol><li><p>↓にアクセスし、「Install」buttonをclick<br> <a href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare" target="_blank" rel="noopener">VS Live Share - Visual Studio Marketplace</a></p></li><li><p>画面上部にVSCode開きますか的なやつが出たりするので開く <img src="/img/2018-05-26-001/1.png" alt=""></p></li><li><p>VSCodeの拡張画面インストール画面が開くので「インストール」を押す <img src="/img/2018-05-26-001/2.png" alt=""></p></li><li><p>インストール後は「再読み込み」をしてください<br> （初回はすこーしインストールに時間かかるかも）</p></li><li><p>VSCodeの画面下部に新しくこんなのついてたらインストールされています <img src="/img/2018-05-26-001/3.png" alt=""></p></li></ol><p><a id="markdown-vs-live-shareにサインインする" name="vs-live-shareにサインインする"></a></p><h3 id="VS-Live-Shareにサインインする"><a href="#VS-Live-Shareにサインインする" class="headerlink" title="VS Live Shareにサインインする"></a>VS Live Shareにサインインする</h3><ol><li><p>VSCodeの画面下部のコレを押す<br> <img src="/img/2018-05-26-001/3.png" alt=""></p></li><li><p>ブラウザにサインイン画面が開くので「Microsoftアカウント」or「GitHubアカウント」でログインします<br> （私は迷わずGitHubでログイン）<br> 「Ready to collaborate!」とブラウザに表示されたら成功してます。VSCodeの画面に戻ってください。 <img src="/img/2018-05-26-001/4.png" alt=""></p></li><li><p>ログインに成功すると画面下部の「Sign in」だった部分がユーザー名に変わってます<br> <img src="/img/2018-05-26-001/5.png" alt=""></p></li></ol><p><a id="markdown-vs-live-shareを使ってみる" name="vs-live-shareを使ってみる"></a></p><h2 id="VS-Live-Shareを使ってみる"><a href="#VS-Live-Shareを使ってみる" class="headerlink" title="VS Live Shareを使ってみる"></a>VS Live Shareを使ってみる</h2><p><a id="markdown-自分の環境をシェアするときホスト" name="自分の環境をシェアするときホスト"></a></p><h3 id="自分の環境をシェアするとき-ホスト"><a href="#自分の環境をシェアするとき-ホスト" class="headerlink" title="自分の環境をシェアするとき(ホスト)"></a>自分の環境をシェアするとき(ホスト)</h3><ol><li><p>画面下部の「Share」ボタンを押しましょう <img src="/img/2018-05-26-001/5.png" alt=""></p></li><li><p>横文字で注意ダイアログが出ますが「OK」を押しましょう<br>接続モードがデフォルトだと「Auto」ですよ 的なこと<br>と<br>ファイヤーウォールとかいい感じにしてね 的なこと<br>が書いてあります（多分）</p></li><li><p>クリップボードに共有用のURLがコピーされているので、共有したい人にチャットとかで送ります<br>URLはこんなやつ → 「 <a href="https://insiders.liveshare.vsengsaas.visualstudio.com/join?xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" target="_blank" rel="noopener">https://insiders.liveshare.vsengsaas.visualstudio.com/join?xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a> 」<br>※ 間違っても不特定多数の人が見れるような場所には貼らないこと！</p></li><li><p>ゲストが参加すると画面下部に参加人数が出ます<br>「自分の名前」のボタンで共有セッションのコントロール<br>「参加人数」のボタンで参加者の確認<br>が出来ます<img src="/img/2018-05-26-001/6.png" alt=""></p></li><li>以上！簡単！</li></ol><p><a id="markdown-他人の環境に参加するときゲスト" name="他人の環境に参加するときゲスト"></a></p><h3 id="他人の環境に参加するとき-ゲスト"><a href="#他人の環境に参加するとき-ゲスト" class="headerlink" title="他人の環境に参加するとき(ゲスト)"></a>他人の環境に参加するとき(ゲスト)</h3><ol><li><p>参加用のURLを開きます<br>ホストに <a href="#自分の環境をシェアするときホスト">自分の環境をシェアするとき(ホスト)</a> の手順で共有URLを発行してもらってください</p></li><li><p>ブラウザが↓のようになっていると思いますので、「Live Share for VS Code を開く」ボタンを押してください。<br><img src="/img/2018-05-26-001/7.png" alt=""></p></li><li><p>VS CODEが立ち上がり、ホストのソースコードをリアルタイムに編集できます</p></li><li><p>以上！簡単！</p></li></ol><p><a id="markdown-おわり" name="おわり"></a></p><h2 id="おわり"><a href="#おわり" class="headerlink" title="おわり"></a>おわり</h2><p>今回は簡単に紹介と最低限の共有方法を紹介しました。<br>この他にも、ターミナルの共有やローカルサーバーの共有という非常に便利でパワフルでビューティフルな機能もあります。<br>また、セキュリティ面の設定などもう少し紹介したい内容もあるので近々書きたいです（たぶん）</p><p>これまでの開発スタイルをガラッと変えてしまうじゃないか！！ぐらいのインパクトな<br><strong>Visual Studio Live Share</strong><br>をぜひ皆さんも使ってみてください！</p><p><a id="markdown-参考リンク" name="参考リンク"></a></p><h2 id="参考リンク"><a href="#参考リンク" class="headerlink" title="参考リンク"></a>参考リンク</h2><p>セキュリティ面が気になる方はこちら</p><ul><li><a href="https://docs.microsoft.com/ja-jp/visualstudio/liveshare/reference/security" target="_blank" rel="noopener">Security - Visual Studio Live Share - Visual Studio Live Share | Microsoft Docs</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;目次&quot;&gt;&lt;a href=&quot;#目次&quot; class=&quot;headerlink&quot; title=&quot;目次&quot;&gt;&lt;/a&gt;目次&lt;/h2&gt;&lt;!-- TOC insertAnchor:true --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#はじめに&quot;&gt;はじめに&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#visual-studio-live-share-とは&quot;&gt;Visual Studio Live Share とは&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#導入編&quot;&gt;導入編&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#拡張機能vs-live-shareをインストール&quot;&gt;拡張機能「VS Live Share」をインストール&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#vs-live-shareにサインインする&quot;&gt;VS Live Shareにサインインする&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#vs-live-shareを使ってみる&quot;&gt;VS Live Shareを使ってみる&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#自分の環境をシェアするときホスト&quot;&gt;自分の環境をシェアするとき(ホスト)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#他人の環境に参加するときゲスト&quot;&gt;他人の環境に参加するとき(ゲスト)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#おわり&quot;&gt;おわり&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#参考リンク&quot;&gt;参考リンク&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /TOC --&gt;
+&lt;p&gt;&lt;a id=&quot;markdown-はじめに&quot; name=&quot;はじめに&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;はじめに&quot;&gt;&lt;a href=&quot;#はじめに&quot; class=&quot;headerlink&quot; title=&quot;はじめに&quot;&gt;&lt;/a&gt;はじめに&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Visual Studio Live Share&lt;/strong&gt; がパブリックプレビューになってました！&lt;br&gt;誰でも利用可能です!  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.visualstudio.com/ja/services/live-share/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Visual Studio Live Share | Visual Studio&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://jp.techcrunch.com/2018/05/08/2018-05-07-live-share-in-visual-studio-lets-you-code-and-debug-together/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Visual Studioの協業機能、Live Shareが一般公開。デバッグセッションも共有可能 | TechCrunch Japan&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;完全に見逃してました。&lt;br&gt;VSCode使いとして恥ずかしい限りです。&lt;br&gt;（de:codeを仕事しながらちら見してて何かやってんなーとは思ってたんですよね。。。）&lt;br&gt;気を取り直して  &lt;/p&gt;
+&lt;p&gt;&lt;a id=&quot;markdown-visual-studio-live-share-とは&quot; name=&quot;visual-studio-live-share-とは&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Visual-Studio-Live-Share-とは&quot;&gt;&lt;a href=&quot;#Visual-Studio-Live-Share-とは&quot; class=&quot;headerlink&quot; title=&quot;Visual Studio Live Share とは&quot;&gt;&lt;/a&gt;Visual Studio Live Share とは&lt;/h2&gt;&lt;p&gt;↑のリンクを見てもらえば一目瞭然ですが  &lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size: 200%&quot;&gt;リアルタイムにソースコードを共同編集できる機能です!&lt;/span&gt;  &lt;/p&gt;
+&lt;p&gt;VS Code もしくは VisualStudioをお使いならプラグインを入れるだけで使えます。&lt;br&gt;もちろん無料です。&lt;br&gt;ピンときてない方は公式の動画を見てみてください（英語）  &lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/ui_rzsDWLqs?start=138&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;どうですか？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;リモートでペアプロできる&lt;/li&gt;
+&lt;li&gt;後輩などから「うごかないっす！」って言われたときにリンク貰えばその人の環境でコードとターミナルまでリアルタイムに確認・編集・操作できる&lt;/li&gt;
+&lt;li&gt;↑ は自分が困ったときに見てもらうのにも有効ですね&lt;/li&gt;
+&lt;li&gt;単なる画面共有ではありません！ 自分の環境のVSCodeで他人のコードをいじれます！&lt;/li&gt;
+&lt;li&gt;なんとソースだけでなくターミナルも共有できます&lt;/li&gt;
+&lt;li&gt;更にローカルで確認用に立ててるサーバーも共有可能です（localhost:3000」とか）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;つづきから↓導入方法（VSCodeのみ）です。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="VSCode" scheme="https://blog.noraneko.work/tags/vscode/"/>
+    
+      <category term="Visual Studio Live Share" scheme="https://blog.noraneko.work/tags/visual-studio-live-share/"/>
+    
+      <category term="拡張機能" scheme="https://blog.noraneko.work/tags/%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD/"/>
+    
+      <category term="共同作業" scheme="https://blog.noraneko.work/tags/%E5%85%B1%E5%90%8C%E4%BD%9C%E6%A5%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gulpの「gulp-gh-pages」のエラーを解決した「gulp-gh-pages-will」ってやつがあった</title>
+    <link href="https://blog.noraneko.work/2018-05-17-001/"/>
+    <id>https://blog.noraneko.work/2018-05-17-001/</id>
+    <published>2018-05-16T15:00:00.000Z</published>
+    <updated>2018-06-19T15:11:51.683Z</updated>
+    
+    <content type="html"><![CDATA[<p>gulpの「gulp-gh-pages」がエラー吐くようになったので↓<br><a href="http://blog.noraneko.work/2018-05-13-001/">gulpの「gulp-gh-pages」がエラー履くようになったときの対応 | 技術は生もの</a><br>で解決したんですが、npmでパッケージインストールするたびに似たようなことやらないといけなくて面倒なので追加調査しました。<br>原因は、上記記事にあるのですが、コレくらいならプルリク出してみようかと思ったら、フォークして解決したものを公開してくれてました。<br>さすがOSS！  </p><p><a href="https://www.npmjs.com/package/gulp-gh-pages-will" target="_blank" rel="noopener">gulp-gh-pages-will - npm</a><br>gulp-gh-pagesをこちらのgulp-gh-pages-willに置き換えましょう。<br>READMEが雑ですが、、、<br>「gulp-gh-pages」ってなっているところを「gulp-gh-pages-will」に書き換えてください。</p><ul><li>package.json</li><li>gulpfile.jsなど</li></ul><a id="more"></a><p>追記。。。<br>READMEはプルリク出てるんですがマージされてない。。<br>コレくらいペロッとマージしといてほしいなぁ</p><ul><li><a href="https://github.com/willianjusten/gulp-gh-pages/pull/1/files" target="_blank" rel="noopener">Update README.md by madnight · Pull Request #1 · willianjusten/gulp-gh-pages</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;gulpの「gulp-gh-pages」がエラー吐くようになったので↓&lt;br&gt;&lt;a href=&quot;http://blog.noraneko.work/2018-05-13-001/&quot;&gt;gulpの「gulp-gh-pages」がエラー履くようになったときの対応 | 技術は生もの&lt;/a&gt;&lt;br&gt;で解決したんですが、npmでパッケージインストールするたびに似たようなことやらないといけなくて面倒なので追加調査しました。&lt;br&gt;原因は、上記記事にあるのですが、コレくらいならプルリク出してみようかと思ったら、フォークして解決したものを公開してくれてました。&lt;br&gt;さすがOSS！  &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.npmjs.com/package/gulp-gh-pages-will&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;gulp-gh-pages-will - npm&lt;/a&gt;&lt;br&gt;gulp-gh-pagesをこちらのgulp-gh-pages-willに置き換えましょう。&lt;br&gt;READMEが雑ですが、、、&lt;br&gt;「gulp-gh-pages」ってなっているところを「gulp-gh-pages-will」に書き換えてください。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;package.json&lt;/li&gt;
+&lt;li&gt;gulpfile.js
+など&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="Github Pages" scheme="https://blog.noraneko.work/tags/github-pages/"/>
+    
+      <category term="gulp" scheme="https://blog.noraneko.work/tags/gulp/"/>
+    
+      <category term="gulp-gh-pages" scheme="https://blog.noraneko.work/tags/gulp-gh-pages/"/>
+    
+      <category term="gulp-gh-pages-will" scheme="https://blog.noraneko.work/tags/gulp-gh-pages-will/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gulpの「gulp-gh-pages」がエラー履くようになったときの対応</title>
+    <link href="https://blog.noraneko.work/2018-05-13-001/"/>
+    <id>https://blog.noraneko.work/2018-05-13-001/</id>
+    <published>2018-05-12T15:00:00.000Z</published>
+    <updated>2018-06-19T15:11:51.677Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>別の方法で解決しました。<br><a href="http://blog.noraneko.work/2018-05-17-001/">gulpの「gulp-gh-pages」のエラーを解決した「gulp-gh-pages-will」ってやつがあった | 技術は生もの</a></p></blockquote><p>gulpの「gulp-gh-pages」がエラー吐くようになった。。<br>こんなやつ↓</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[19:00:31] Starting &apos;github-page-push&apos;...</span><br><span class="line">E:\Projects\web_ai\node_modules\gift\lib\commit.js:145</span><br><span class="line">      ref1 = /^.+? (.*) (\d+) .*$/.exec(line), m = ref1[0], actor = ref1[1], epoch = ref1[2];</span><br><span class="line">                                                       ^</span><br><span class="line"></span><br><span class="line">TypeError: Cannot read property &apos;0&apos; of null</span><br><span class="line">    at Function.module.exports.Commit.actor (E:\Projects\web_ai\node_modules\gift\lib\commit.js:145:56)</span><br><span class="line">    at Function.module.exports.Commit.parse_commits (E:\Projects\web_ai\node_modules\gift\lib\commit.js:111:21)</span><br><span class="line">    at E:\Projects\web_ai\node_modules\gift\lib\commit.js:55:39</span><br><span class="line">    at ChildProcess.exithandler (child_process.js:273:7)</span><br><span class="line">    at ChildProcess.emit (events.js:182:13)</span><br><span class="line">    at maybeClose (internal/child_process.js:957:16)</span><br><span class="line">    at Process.ChildProcess._handle.onexit (internal/child_process.js:246:5)</span><br></pre></td></tr></table></figure><p>どうやら、Nodeのバージョンが8以上とか新しい環境で出るようです。<br>（そういえば10系にした気がする）<br>対策としては、gulp-gh-pagesの内部で使っている「gift」ってやつの最新版を明示的に入れてやれば良い。</p><a id="more"></a><h2 id="対象"><a href="#対象" class="headerlink" title="対象"></a>対象</h2><ul><li>“gulp-gh-pages”: “^0.5.4”</li></ul><h2 id="対策"><a href="#対策" class="headerlink" title="対策"></a>対策</h2><p>package.jsonに以下を追記。</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"devDependencies": &#123;</span><br><span class="line">  ・・・・</span><br><span class="line">  "gift": "^0.10.2"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://github.com/shinnn/gulp-gh-pages/issues/116" target="_blank" rel="noopener">TypeError: Cannot read property ‘0’ of null · Issue #116 · shinnn/gulp-gh-pages</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;別の方法で解決しました。&lt;br&gt;&lt;a href=&quot;http://blog.noraneko.work/2018-05-17-001/&quot;&gt;gulpの「gulp-gh-pages」のエラーを解決した「gulp-gh-pages-will」ってやつがあった | 技術は生もの&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;gulpの「gulp-gh-pages」がエラー吐くようになった。。&lt;br&gt;こんなやつ↓&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[19:00:31] Starting &amp;apos;github-page-push&amp;apos;...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;E:\Projects\web_ai\node_modules\gift\lib\commit.js:145&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      ref1 = /^.+? (.*) (\d+) .*$/.exec(line), m = ref1[0], actor = ref1[1], epoch = ref1[2];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                                       ^&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TypeError: Cannot read property &amp;apos;0&amp;apos; of null&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    at Function.module.exports.Commit.actor (E:\Projects\web_ai\node_modules\gift\lib\commit.js:145:56)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    at Function.module.exports.Commit.parse_commits (E:\Projects\web_ai\node_modules\gift\lib\commit.js:111:21)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    at E:\Projects\web_ai\node_modules\gift\lib\commit.js:55:39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    at ChildProcess.exithandler (child_process.js:273:7)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    at ChildProcess.emit (events.js:182:13)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    at maybeClose (internal/child_process.js:957:16)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    at Process.ChildProcess._handle.onexit (internal/child_process.js:246:5)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;どうやら、Nodeのバージョンが8以上とか新しい環境で出るようです。&lt;br&gt;（そういえば10系にした気がする）&lt;br&gt;対策としては、gulp-gh-pagesの内部で使っている「gift」ってやつの最新版を明示的に入れてやれば良い。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Github Pages" scheme="https://blog.noraneko.work/tags/github-pages/"/>
+    
+      <category term="gulp" scheme="https://blog.noraneko.work/tags/gulp/"/>
+    
+      <category term="gulp-gh-pages" scheme="https://blog.noraneko.work/tags/gulp-gh-pages/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MACをAndroidのUSBテザリングでネットに繋ぐ</title>
+    <link href="https://blog.noraneko.work/2018-03-14-001/"/>
+    <id>https://blog.noraneko.work/2018-03-14-001/</id>
+    <published>2018-03-13T15:00:00.000Z</published>
+    <updated>2018-06-19T15:11:51.669Z</updated>
+    
+    <content type="html"><![CDATA[<p>ドライバを↓からDownloadしてインストール。  </p><ul><li><a href="http://joshuawise.com/horndis" target="_blank" rel="noopener">HoRNDIS: USB tethering driver for Mac OS X | Joshua Wise’s domain</a>私は、release 8: HoRNDIS-rel8.pkg (78985 bytes)をインストール。<br>途中でセキュリティ的なやつに引っかかったら、環境設定→セキュリティとプライバシーてきなとこから許可する。  </li></ul><p>ちなみに<br>docomoのXperiaXZ(SO-01J) + 古めのMacBook Pro（macOS High Sierra）<br>で確認。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;ドライバを↓からDownloadしてインストール。  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://joshuawise.com/horndis&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;HoRNDIS: USB tethering dr
+      
+    
+    </summary>
+    
+    
+      <category term="Mac" scheme="https://blog.noraneko.work/tags/mac/"/>
+    
+      <category term="テザリング" scheme="https://blog.noraneko.work/tags/%E3%83%86%E3%82%B6%E3%83%AA%E3%83%B3%E3%82%B0/"/>
+    
+      <category term="Android" scheme="https://blog.noraneko.work/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AmazonLinux2 にTD Toolbelt (CLI)をインストール</title>
+    <link href="https://blog.noraneko.work/2018-02-19-001/"/>
+    <id>https://blog.noraneko.work/2018-02-19-001/</id>
+    <published>2018-02-18T15:00:00.000Z</published>
+    <updated>2018-06-19T15:11:51.664Z</updated>
+    
+    <content type="html"><![CDATA[<p>AmazonLinux2用のインストールスクリプトがあるっぽい<br>Centos用の手順だとエラー出るので少々詰まった。<br>根気よく探して↓を発見。<br>すんなり入りました。</p><blockquote><h1 id="Amazon-Linux-1"><a href="#Amazon-Linux-1" class="headerlink" title="Amazon Linux 1"></a>Amazon Linux 1</h1><p>$ curl -L <a href="https://toolbelt.treasuredata.com/sh/install-amazon1-td-agent3.sh" target="_blank" rel="noopener">https://toolbelt.treasuredata.com/sh/install-amazon1-td-agent3.sh</a> | sh</p><h1 id="Amazon-Linux-2"><a href="#Amazon-Linux-2" class="headerlink" title="Amazon Linux 2"></a>Amazon Linux 2</h1><p>$ curl -L <a href="https://toolbelt.treasuredata.com/sh/install-amazon2-td-agent3.sh" target="_blank" rel="noopener">https://toolbelt.treasuredata.com/sh/install-amazon2-td-agent3.sh</a> | sh</p></blockquote><p>引用: <a href="https://docs.fluentd.org/v1.0/articles/install-by-rpm#redhat-/-centos" target="_blank" rel="noopener">Installing Fluentd Using rpm Package | Fluentd</a></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>ここには無い</p><ul><li><a href="https://docs.treasuredata.com/articles/installing-the-cli#redhat--centos" target="_blank" rel="noopener">Installing and Updating the Treasure Data CLI | Treasure Data</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;AmazonLinux2用のインストールスクリプトがあるっぽい&lt;br&gt;Centos用の手順だとエラー出るので少々詰まった。&lt;br&gt;根気よく探して↓を発見。&lt;br&gt;すんなり入りました。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h1 id=&quot;Amazon-Linux-1&quot;&gt;&lt;a h
+      
+    
+    </summary>
+    
+    
+      <category term="Treasure Data" scheme="https://blog.noraneko.work/tags/treasure-data/"/>
+    
+      <category term="AWS" scheme="https://blog.noraneko.work/tags/aws/"/>
+    
+      <category term="AmazonLinux2" scheme="https://blog.noraneko.work/tags/amazonlinux2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>今いるタブのリンクをMarkdown用の形式でコピーするブラウザ拡張機能作った</title>
+    <link href="https://blog.noraneko.work/2018-02-15-001/"/>
+    <id>https://blog.noraneko.work/2018-02-15-001/</id>
+    <published>2018-02-14T15:00:00.000Z</published>
+    <updated>2018-06-19T15:11:51.658Z</updated>
+    
+    <content type="html"><![CDATA[<p>Markdownで、技術のまとめを書いたり、ブログを書いたりするときに参考サイトのリンクを作るのが地味に面倒でした。。。<br>そこで、ブラウザ拡張機能を作りました。<br>インストールして、アイコンクリックでそのページのリンクを<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[技術は生もの](http://blog.noraneko.work/)</span><br></pre></td></tr></table></figure></p><p>こんな形でコピーしてくれます。<br>あとは Ctl+Vで貼り付けるだけ！！  </p><p><img src="/img/2018-02-15-001-001.PNG" alt=""></p><p>インストールはこちら<br><a href="https://chrome.google.com/webstore/detail/copy-markdown-link/aagldhajnlablfkankpookoabndalnbi?hl=ja&amp;gl=JP" target="_blank" rel="noopener">Copy Markdown Link - Chrome ウェブストア</a></p><p>まぁ似たようなのは既にあるんですが、ボタンクリックだけですむシンプルなやつが欲しかったです。<br>あとは、拡張機能作ってみたかった。<br>参考にしたサイトや僕のソースはGithubにあるので、拡張機能作ってみたい方は参考にしてみてください。<br><a href="https://github.com/eiichi-worker/browser-extension-markdown-link" target="_blank" rel="noopener">Chrome拡張機能「Copy Markdown Link」</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Markdownで、技術のまとめを書いたり、ブログを書いたりするときに参考サイトのリンクを作るのが地味に面倒でした。。。&lt;br&gt;そこで、ブラウザ拡張機能を作りました。&lt;br&gt;インストールして、アイコンクリックでそのページのリンクを&lt;br&gt;&lt;figure class=&quot;hig
+      
+    
+    </summary>
+    
+    
+      <category term="Chrome拡張機能" scheme="https://blog.noraneko.work/tags/chrome%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD/"/>
+    
+      <category term="Markdown" scheme="https://blog.noraneko.work/tags/markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VS Codeで拡張子ごとの関連付けを設定する</title>
+    <link href="https://blog.noraneko.work/2018-01-04-001/"/>
+    <id>https://blog.noraneko.work/2018-01-04-001/</id>
+    <published>2018-01-03T15:00:00.000Z</published>
+    <updated>2018-06-19T15:11:51.652Z</updated>
+    
+    <content type="html"><![CDATA[<p>Visual Studio Code便利ですね！<br>ただ、特定の拡張子は指定の拡張機能で開いてほしい時があります。<br>Elasticsearch用のjsonファイルは「Elasticsearch for VSCode」で開いてほしいです。<br>毎回左下のボタンでjson → Elasticsearchに切り替えてもいいのだけど面倒。<br>同じように hive用のsqlとかそういうことは稀によくある。<br>そんなとき僕は拡張子を、「.es.json」とかにしている。<br>ただのJSONではなくて、es用のjsonだよ言う意味。<br>hiveは「.hive.sql」だったりします。<br>これらを自動で指定の拡張機能（シンタックスハイライトとか）で開くように設定します。</p><a id="more"></a><h2 id="設定方法"><a href="#設定方法" class="headerlink" title="設定方法"></a>設定方法</h2><p>ファイル → 基本設定 → 設定 を開く<br>右側の「ユーザー設定」に拡張子とプラグインの対応設定を追記する。「files.associations」というキーの中に書いていく。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    /* このへんに既存の設定があるはず */</span><br><span class="line">    </span><br><span class="line">    &quot;files.associations&quot;:</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;*.es.json&quot;: &quot;es&quot;,</span><br><span class="line">        &quot;*.hive.sql&quot;: &quot;hive-sql&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>ファイル名は米印「<code>*</code>」でワイルドカード</p><h2 id="おまけ"><a href="#おまけ" class="headerlink" title="おまけ"></a>おまけ</h2><ul><li>Elasticsearch for VSCode ってプラグインは、 ここからElasticsearchに対してクエリを発行できるので便利！！</li><li>files.associationsに指定する名前がわからないときは、「言語モードの変更」を出すと一覧で出ます。</li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a></li><li><a href="https://marketplace.visualstudio.com/items?itemName=ria.elastic" target="_blank" rel="noopener">Elasticsearch for VSCode</a></li><li><a href="http://siamcats.hateblo.jp/entry/2017/05/09/180613" target="_blank" rel="noopener">VSCodeのシンタックスハイライトと拡張子の関連付け</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Visual Studio Code便利ですね！&lt;br&gt;ただ、特定の拡張子は指定の拡張機能で開いてほしい時があります。&lt;br&gt;Elasticsearch用のjsonファイルは「Elasticsearch for VSCode」で開いてほしいです。&lt;br&gt;毎回左下のボタンでjson → Elasticsearchに切り替えてもいいのだけど面倒。&lt;br&gt;同じように hive用のsqlとかそういうことは稀によくある。&lt;br&gt;そんなとき僕は拡張子を、「.es.json」とかにしている。&lt;br&gt;ただのJSONではなくて、es用のjsonだよ言う意味。&lt;br&gt;hiveは「.hive.sql」だったりします。&lt;br&gt;これらを自動で指定の拡張機能（シンタックスハイライトとか）で開くように設定します。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="HiveQL" scheme="https://blog.noraneko.work/tags/hiveql/"/>
+    
+      <category term="VSCode" scheme="https://blog.noraneko.work/tags/vscode/"/>
+    
+      <category term="Elasticsearch" scheme="https://blog.noraneko.work/tags/elasticsearch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Let&#39;s Encrypt 設定手順</title>
+    <link href="https://blog.noraneko.work/2017-12-14-001/"/>
+    <id>https://blog.noraneko.work/2017-12-14-001/</id>
+    <published>2017-12-13T15:00:00.000Z</published>
+    <updated>2018-06-19T15:11:51.646Z</updated>
+    
+    <content type="html"><![CDATA[<p>無料でSSL証明書を発行できるLet’s Encryptの設定手順をまとめる<br>www.example.comだとして</p><h3 id="certbotインストール"><a href="#certbotインストール" class="headerlink" title="certbotインストール"></a>certbotインストール</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo curl https://dl.eff.org/certbot-auto -o /usr/bin/certbot-auto</span><br><span class="line">sudo chmod 700 /usr/bin/certbot-auto</span><br></pre></td></tr></table></figure><h3 id="証明書の発行"><a href="#証明書の発行" class="headerlink" title="証明書の発行"></a>証明書の発行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot-auto certonly --webroot -w /data/www.example.com -d www.example.com --email webmaster@example.com --debug</span><br></pre></td></tr></table></figure><p>↑で証明書発行されるので、Apacheなりに設定する</p><ul><li>-w webroot</li><li>-d ドメイン</li><li>–email 連絡先</li></ul><h3 id="CRONで自動更新を仕掛けておく"><a href="#CRONで自動更新を仕掛けておく" class="headerlink" title="CRONで自動更新を仕掛けておく"></a>CRONで自動更新を仕掛けておく</h3><p>sudo vi /etc/cron.d/update-letsencrypt</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00 19 10 * * root certbot-auto renew --force-renew &amp;&amp; service httpd restart</span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://qiita.com/MashMorgan/items/56498f276c54406b1928" target="_blank" rel="noopener">AWS EC2にLet’s Encryptを導入してみた - Qiita</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;無料でSSL証明書を発行できるLet’s Encryptの設定手順をまとめる&lt;br&gt;www.example.comだとして&lt;/p&gt;
+&lt;h3 id=&quot;certbotインストール&quot;&gt;&lt;a href=&quot;#certbotインストール&quot; class=&quot;headerlink&quot; titl
+      
+    
+    </summary>
+    
+    
+      <category term="SSL" scheme="https://blog.noraneko.work/tags/ssl/"/>
+    
+      <category term="Let&#39;s Encrypt" scheme="https://blog.noraneko.work/tags/let-s-encrypt/"/>
+    
+      <category term="無料" scheme="https://blog.noraneko.work/tags/%E7%84%A1%E6%96%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hiveのtranslateとreplaceの使い方</title>
+    <link href="https://blog.noraneko.work/2017-10-10-001/"/>
+    <id>https://blog.noraneko.work/2017-10-10-001/</id>
+    <published>2017-10-09T15:00:00.000Z</published>
+    <updated>2018-06-19T15:11:51.640Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hiveでtranslateとreplaceの使い所を間違えてたのでまとめる。<br>「これ」を「あれ」にしたいのにtranslateを使ってわけわからんことになった。<br>（知ってる人にはそりゃそうだと言われそうだけど、きっと勘違いしている人もいるはず）</p><a id="more"></a><h2 id="translateとreplace"><a href="#translateとreplace" class="headerlink" title="translateとreplace"></a>translateとreplace</h2><h3 id="translate"><a href="#translate" class="headerlink" title="translate"></a>translate</h3><p>translate(string|char|varchar input, string|char|varchar from, string|char|varchar to)<br>inputをfromに対応するtoで置き換えですが、fromとtoは1文字ごとに置き換えます。  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">translate(&quot;やまねこのこじろう&quot;, &quot;ねこ&quot;, &quot;いぬ&quot;)</span><br></pre></td></tr></table></figure><p>これは、<br>ね → い<br>こ → ぬ<br>に置き換えられるので<br>「やま<strong>いぬ</strong>の<strong>ぬ</strong>じろう」<br>に置換されます。  </p><p>「ねこ」を「いぬ」にしたい場合は、translateでは意図せぬ結果になることがあります。  </p><h3 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h3><p>replace(string A, string OLD, string NEW)</p><p>こちらがいつもの置換です。OLDの文字列をNEWの文字列に置換します。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">replace(&quot;やまねこのこじろう&quot;, &quot;ねこ&quot;, &quot;いぬ&quot;)</span><br></pre></td></tr></table></figure><p>この結果は、<br>ねこ → いぬ<br>なので<br>「やま<strong>いぬ</strong>のこじろう」<br>となります。  </p><h2 id="実験"><a href="#実験" class="headerlink" title="実験"></a>実験</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- Hive実験 translate と replace</span></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">  <span class="keyword">translate</span>(<span class="string">"やまねこのこじろう"</span>, <span class="string">"ねこ"</span>, <span class="string">"いぬ"</span>)  <span class="keyword">as</span> <span class="keyword">translate</span></span><br><span class="line">, <span class="keyword">replace</span>(<span class="string">"やまねこのこじろう"</span>, <span class="string">"ねこ"</span>, <span class="string">"いぬ"</span>)  <span class="keyword">as</span> <span class="keyword">replace</span></span><br></pre></td></tr></table></figure><p>結果</p><table><thead><tr><th></th><th>translate</th><th>replace</th></tr></thead><tbody><tr><td>1</td><td>やま<strong>いぬ</strong>の<strong>ぬ</strong>じろう</td><td>やま<strong>いぬ</strong>のこじろう</td></tr></tbody></table><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF" target="_blank" rel="noopener">Hive LanguageManual UDF</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hiveでtranslateとreplaceの使い所を間違えてたのでまとめる。&lt;br&gt;「これ」を「あれ」にしたいのにtranslateを使ってわけわからんことになった。&lt;br&gt;（知ってる人にはそりゃそうだと言われそうだけど、きっと勘違いしている人もいるはず）&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Hive" scheme="https://blog.noraneko.work/tags/hive/"/>
+    
+      <category term="HiveQL" scheme="https://blog.noraneko.work/tags/hiveql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>10/4 Google新製品記事まとめ（粗）</title>
+    <link href="https://blog.noraneko.work/2017-10-05-001/"/>
+    <id>https://blog.noraneko.work/2017-10-05-001/</id>
+    <published>2017-10-04T15:00:00.000Z</published>
+    <updated>2018-06-19T15:11:51.634Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="僕の感じた今回のテーマ「AIとカメラ」"><a href="#僕の感じた今回のテーマ「AIとカメラ」" class="headerlink" title="僕の感じた今回のテーマ「AIとカメラ」"></a>僕の感じた今回のテーマ「AIとカメラ」</h1><h1 id="Google-Pixel-2、Pixel-2-XL"><a href="#Google-Pixel-2、Pixel-2-XL" class="headerlink" title="Google Pixel 2、Pixel 2 XL"></a>Google Pixel 2、Pixel 2 XL</h1><p>5inch、6inch<br>Snapdragon 835、RAM 4GB。ストレージは64GBと128GB<br>Pixel 2の64GBが649ドル（約7万2000円）、128GBが749ドル（約8万4000円）。Pixel 2 XLの64GBモデルが849ドル（約9万5000円）、128GBモデルが949ドル（約10万6000円）<br>カメラ評価 98 （あいぽん8は92）<br>Google Lens搭載<br>レンズ1つで2つ分 dual-pixel sensor<br>ARCore対応（Tangoの後継、普及版）<br>アクティブエッジ  </p><p>※ 残念ながら現状日本で発売される予定はない  </p><ul><li><a href="https://www.gizmodo.jp/2017/10/pixel-2-xl.html" target="_blank" rel="noopener">https://www.gizmodo.jp/2017/10/pixel-2-xl.html</a>   </li><li><a href="https://www.gizmodo.jp/2017/10/105584.html" target="_blank" rel="noopener">https://www.gizmodo.jp/2017/10/105584.html</a>  </li></ul><a id="more"></a><h1 id="Pixel-Buds"><a href="#Pixel-Buds" class="headerlink" title="Pixel Buds"></a>Pixel Buds</h1><p>ワイヤレスヘッドセットGoogle翻訳を利用したリアルタイム通訳が利用できる</p><ul><li><a href="https://app.famitsu.com/20171005_1152155/" target="_blank" rel="noopener">https://app.famitsu.com/20171005_1152155/</a></li></ul><h1 id="Google-Home、Google-Home-Mini-New-、Google-Home-Max（New-！）"><a href="#Google-Home、Google-Home-Mini-New-、Google-Home-Max（New-！）" class="headerlink" title="Google Home、Google Home Mini (New!!)、Google Home Max（New!！）"></a>Google Home、Google Home Mini (New!!)、Google Home Max（New!！）</h1><h2 id="Home"><a href="#Home" class="headerlink" title="Home"></a>Home</h2><p>やっとこさ日本発売！！</p><ul><li><a href="https://store.google.com/product/google_home?hl=ja" target="_blank" rel="noopener">https://store.google.com/product/google_home?hl=ja</a></li></ul><h2 id="Home-Mini"><a href="#Home-Mini" class="headerlink" title="Home Mini"></a>Home Mini</h2><p>Miniは今日から予約受け付けを開始し、10月19日から出荷</p><ul><li><a href="https://store.google.com/product/google_home_mini?hl=ja" target="_blank" rel="noopener">https://store.google.com/product/google_home_mini?hl=ja</a></li></ul><h2 id="Home-Max"><a href="#Home-Max" class="headerlink" title="Home Max"></a>Home Max</h2><p>Home Maxの特徴は4.5インチの広帯域スピーカーをステレオ構成として、さらに2つのツイーター<br>スマートサウンドと称する空間認識によるAI自動オーディオチューニング機能を搭載し、室内の家具配置などに合わせてサウンドを調整 YouTube Musicは12か月間の広告なしリスニング権が付属<br>Home Maxは12月  </p><ul><li><a href="http://japanese.engadget.com/2017/10/04/google-home-max-youtube-music-1-12/" target="_blank" rel="noopener">http://japanese.engadget.com/2017/10/04/google-home-max-youtube-music-1-12/</a></li></ul><h1 id="Google-Clips"><a href="#Google-Clips" class="headerlink" title="Google Clips"></a>Google Clips</h1><p>AI搭載 スマートカメラ16GB3時間分のMotion Photos249ドル機械学習を利用し、ユーザー、家族、友人、ペットなど特定の対象を認識して重要な場面を記録置いとくだけで”いいところ”を撮影スタンドアローンですべての機能が実行レンズが何かの影になってしまった場合は人工知能が事態を認識してスマートフォンにそのことを通知</p><ul><li><a href="http://www.itmedia.co.jp/news/articles/1710/05/news060.html" target="_blank" rel="noopener">http://www.itmedia.co.jp/news/articles/1710/05/news060.html</a></li></ul><h1 id="Google-Pixelbook"><a href="#Google-Pixelbook" class="headerlink" title="Google Pixelbook"></a>Google Pixelbook</h1><p>Chrome OS + Androidアプリ<br>ペン対応タブレット<br>  ペンの遅延は10ms（Surface 21ms ApplePencil 20ms）<br>  傾き検出、2000段階感圧<br>12.3インチ、Core i5 / i7プロセッサ、最大16GB RAM、128 / 256 / 512GBストレージ<br>10.3mm厚、約1.1kg キーボードをぐるっと反対側に畳んでタブレット   </p><p>128GBモデル999ドル<br>Pixelbook Pen は別売り100ドル  </p><ul><li><a href="http://japanese.engadget.com/2017/10/04/google-pixelbook-chromebook/" target="_blank" rel="noopener">http://japanese.engadget.com/2017/10/04/google-pixelbook-chromebook/</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;僕の感じた今回のテーマ「AIとカメラ」&quot;&gt;&lt;a href=&quot;#僕の感じた今回のテーマ「AIとカメラ」&quot; class=&quot;headerlink&quot; title=&quot;僕の感じた今回のテーマ「AIとカメラ」&quot;&gt;&lt;/a&gt;僕の感じた今回のテーマ「AIとカメラ」&lt;/h1&gt;&lt;h1 id=&quot;Google-Pixel-2、Pixel-2-XL&quot;&gt;&lt;a href=&quot;#Google-Pixel-2、Pixel-2-XL&quot; class=&quot;headerlink&quot; title=&quot;Google Pixel 2、Pixel 2 XL&quot;&gt;&lt;/a&gt;Google Pixel 2、Pixel 2 XL&lt;/h1&gt;&lt;p&gt;5inch、6inch&lt;br&gt;Snapdragon 835、RAM 4GB。ストレージは64GBと128GB&lt;br&gt;Pixel 2の64GBが649ドル（約7万2000円）、128GBが749ドル（約8万4000円）。Pixel 2 XLの64GBモデルが849ドル（約9万5000円）、128GBモデルが949ドル（約10万6000円）&lt;br&gt;カメラ評価 98 （あいぽん8は92）&lt;br&gt;Google Lens搭載&lt;br&gt;レンズ1つで2つ分 dual-pixel sensor&lt;br&gt;ARCore対応（Tangoの後継、普及版）&lt;br&gt;アクティブエッジ  &lt;/p&gt;
+&lt;p&gt;※ 残念ながら現状日本で発売される予定はない  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.gizmodo.jp/2017/10/pixel-2-xl.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.gizmodo.jp/2017/10/pixel-2-xl.html&lt;/a&gt;   &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.gizmodo.jp/2017/10/105584.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.gizmodo.jp/2017/10/105584.html&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="Google" scheme="https://blog.noraneko.work/tags/google/"/>
+    
+      <category term="新製品" scheme="https://blog.noraneko.work/tags/%E6%96%B0%E8%A3%BD%E5%93%81/"/>
+    
+      <category term="Google Pixel 2" scheme="https://blog.noraneko.work/tags/google-pixel-2/"/>
+    
+      <category term="Google Home" scheme="https://blog.noraneko.work/tags/google-home/"/>
+    
+      <category term="Google Pixelbook" scheme="https://blog.noraneko.work/tags/google-pixelbook/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MacでNVSを起動時に読み込む</title>
+    <link href="https://blog.noraneko.work/2017-09-26-001/"/>
+    <id>https://blog.noraneko.work/2017-09-26-001/</id>
+    <published>2017-09-25T17:40:00.000Z</published>
+    <updated>2018-06-19T15:11:51.627Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bash_profile</span><br></pre></td></tr></table></figure><p>以下を追記</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NVS_HOME=&quot;$HOME/.nvs&quot;</span><br><span class="line">[ -s &quot;$NVS_HOME/nvs.sh&quot; ] &amp;&amp; . &quot;$NVS_HOME/nvs.sh&quot;</span><br></pre></td></tr></table></figure><p><a href="https://github.com/jasongin/nvs/blob/master/README.md" target="_blank" rel="noopener">https://github.com/jasongin/nvs/blob/master/README.md</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span cla
+      
+    
+    </summary>
+    
+    
+      <category term="Mac" scheme="https://blog.noraneko.work/tags/mac/"/>
+    
+      <category term="NVS" scheme="https://blog.noraneko.work/tags/nvs/"/>
+    
+      <category term="Node.js" scheme="https://blog.noraneko.work/tags/node-js/"/>
+    
+      <category term=".bash_profile" scheme="https://blog.noraneko.work/tags/bash-profile/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Slackからメールが届かない。。。(Gmail)</title>
+    <link href="https://blog.noraneko.work/2017-07-29-001/"/>
+    <id>https://blog.noraneko.work/2017-07-29-001/</id>
+    <published>2017-07-28T15:00:00.000Z</published>
+    <updated>2018-06-19T15:11:51.621Z</updated>
+    
+    <content type="html"><![CDATA[<p>Slackで新規チーム作ろうとしたり、入ってるチーム忘れたときにメールが届かなくてこまった。。。<br>迷惑メールにもないし、何度送っても届かない。。。<br>さんざんググッた結果、Gmailは迷惑メールにすら入らず破棄されることもあるらしい。</p><h2 id="対策"><a href="#対策" class="headerlink" title="対策"></a>対策</h2><p>Googleの連絡先に以下のアドレスを追加する</p><ul><li>no-reply@slack.com</li><li>feedback@slack.com</li></ul><p>これで届くようになりました。</p><h2 id="参考・関連リンク"><a href="#参考・関連リンク" class="headerlink" title="参考・関連リンク"></a>参考・関連リンク</h2><ul><li><a href="https://contacts.google.com/" target="_blank" rel="noopener">Google 連絡先</a></li><li><a href="https://nk-16.net/blog/?p=527" target="_blank" rel="noopener">【Gmail】フィルタや迷惑メールを見ても届かない場合は、送り主を連絡先に追加しよう</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Slackで新規チーム作ろうとしたり、入ってるチーム忘れたときにメールが届かなくてこまった。。。&lt;br&gt;迷惑メールにもないし、何度送っても届かない。。。&lt;br&gt;さんざんググッた結果、Gmailは迷惑メールにすら入らず破棄されることもあるらしい。&lt;/p&gt;
+&lt;h2 id=&quot;対策
+      
+    
+    </summary>
+    
+    
+      <category term="Slack" scheme="https://blog.noraneko.work/tags/slack/"/>
+    
+      <category term="Gmail" scheme="https://blog.noraneko.work/tags/gmail/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>digdagのローカルモードでSecrets使う</title>
+    <link href="https://blog.noraneko.work/2017-07-20-001/"/>
+    <id>https://blog.noraneko.work/2017-07-20-001/</id>
+    <published>2017-07-19T15:00:00.000Z</published>
+    <updated>2018-06-19T15:11:51.616Z</updated>
+    
+    <content type="html"><![CDATA[<p>Digdagで「td_table_export」とかSecretsにAWSのAPIキー等を設定して使うOperatorをさくっと使いたい時に、いちいちサーバー起動したり、TDWorkflowに上げたりするのが面倒とりあえず動けばいいよってときに、さくっとローカルモードで動かす方法。</p><ul><li>「~/.config/digdag/config」にSecretsを書く</li></ul><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.config/digdag/config</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">secrets.aws.s3.access_key_id=XXXXXXXXXXXXXXXXXXXX</span><br><span class="line">secrets.aws.s3.secret_access_key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><br></pre></td></tr></table></figure><ul><li>digdagは↓</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+task:</span><br><span class="line">  td_table_export&gt;:</span><br><span class="line">  database: test</span><br><span class="line">  table: web_logs</span><br><span class="line">  file_format: tsv.gz</span><br><span class="line">  from: $&#123;moment(session_time).add(-1, &apos;days&apos;).format(&quot;YYYY-MM-DD&quot;)&#125; 00:00:00 +0900</span><br><span class="line">  to:   $&#123;moment(session_time).format(&quot;YYYY-MM-DD&quot;)&#125; 00:00:00 +0900</span><br><span class="line">  s3_bucket: backup</span><br><span class="line">  s3_path_prefix: web_logs/</span><br></pre></td></tr></table></figure><ul><li>あとは 「digdag run」で普通に動く</li></ul><p>※ ちなみにtd_table_exportのエクスポート先のBucketは米国東部（バージニア北部）のus-east-1じゃないとエラー出る。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="http://qiita.com/gyamxxx/items/2cd6296ebdd9be709769" target="_blank" rel="noopener">digdag のローカルモードで gcp, bq オペレータを使う</a></li><li><a href="http://docs.digdag.io/operators.html" target="_blank" rel="noopener">Operators &mdash; Digdag 0.9.5 documentation</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Digdagで「td_table_export」とかSecretsにAWSのAPIキー等を設定して使うOperatorをさくっと使いたい時に、いちいちサーバー起動したり、TDWorkflowに上げたりするのが面倒
+とりあえず動けばいいよってときに、さくっとローカルモードで動
+      
+    
+    </summary>
+    
+    
+      <category term="Treasure Data" scheme="https://blog.noraneko.work/tags/treasure-data/"/>
+    
+      <category term="Digdag" scheme="https://blog.noraneko.work/tags/digdag/"/>
+    
+      <category term="AWS" scheme="https://blog.noraneko.work/tags/aws/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HIVEで形態素解析するときに、不要と思われる文字列は除外していくクエリ</title>
+    <link href="https://blog.noraneko.work/2017-06-08-002/"/>
+    <id>https://blog.noraneko.work/2017-06-08-002/</id>
+    <published>2017-06-07T15:00:00.000Z</published>
+    <updated>2018-06-19T15:11:51.609Z</updated>
+    
+    <content type="html"><![CDATA[<p>不要な文字は除いて意味のある文字列のみをある程度フィルタリングしたかった。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT *, word</span><br><span class="line">FROM &#123;table&#125;</span><br><span class="line">LATERAL VIEW explode(tokenize_ja(&#123;text_column&#125;)) t AS word</span><br><span class="line">WHERE 1=1</span><br><span class="line">AND word not rlike &apos;^[a-zA-Z0-9]&#123;1&#125;$&apos; -- 除外 英語一文字</span><br><span class="line">AND word not rlike &quot;^[!-9@_]*$&quot; -- 除外 数字記号のみ</span><br><span class="line">AND word not rlike &quot;^[〇一二三四五六七八九]*$&quot; -- 漢数字のみ</span><br><span class="line">AND word not rlike &quot;^[\u3041-\u3096\u30A1-\u30FA]&#123;1&#125;$&quot; -- ひらがなカタカナ1文字</span><br></pre></td></tr></table></figure><p>わりかし個人用なので要件に応じて調整してください。<br>もっといいやつあったらください。</p><p>ちなみにtokenize_jaはHivemallの関数です。</p><p>参考</p><ul><li><a href="http://so-zou.jp/software/tech/programming/tech/regular-expression/meta-character/variable-width-encoding.htm#no1" target="_blank" rel="noopener">http://so-zou.jp/software/tech/programming/tech/regular-expression/meta-character/variable-width-encoding.htm#no1</a></li><li><a href="https://github.com/myui/hivemall/wiki/Tokenizer" target="_blank" rel="noopener">https://github.com/myui/hivemall/wiki/Tokenizer</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;不要な文字は除いて意味のある文字列のみをある程度フィルタリングしたかった。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="Hive" scheme="https://blog.noraneko.work/tags/hive/"/>
+    
+      <category term="HiveQL" scheme="https://blog.noraneko.work/tags/hiveql/"/>
+    
+      <category term="形態素解析" scheme="https://blog.noraneko.work/tags/%E5%BD%A2%E6%85%8B%E7%B4%A0%E8%A7%A3%E6%9E%90/"/>
+    
+      <category term="Hivemall" scheme="https://blog.noraneko.work/tags/hivemall/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Github Pages （プロジェクトサイト）を独自ドメインで公開するメモ</title>
+    <link href="https://blog.noraneko.work/2017-05-15-001/"/>
+    <id>https://blog.noraneko.work/2017-05-15-001/</id>
+    <published>2017-05-14T16:16:00.000Z</published>
+    <updated>2018-06-19T15:11:51.603Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Github Pagesを使いほぼ無料で自分のサイトを公開します。<br>今回は独自ドメインで公開するのでドメイン代がかかりますが、独自ドメインを当てない場合は無料です。</p><p>Githubには「Github Pages」という、無料のサイトホスティング機能があります。<br>それを使いサイトを公開します。</p><p>この記事の前提条件です。事前準備をお願いします。</p><ul><li>Githubアカウント作成済み</li><li>当てたいドメイン購入済み<ul><li>ドメイン、DNSの設定ができる</li></ul></li><li>サイト作成の知識がある</li><li>Gitに関する知識がある<ul><li>サイトの更新はGitで行います</li></ul></li></ul><p>今回作るもの</p><ul><li><p>リポジトリ<a href="https://github.com/eiichi-worker/sample-pages" target="_blank" rel="noopener">https://github.com/eiichi-worker/sample-pages</a></p></li><li><p>サイト<a href="http://sample-pages.noraneko.work" target="_blank" rel="noopener">http://sample-pages.noraneko.work</a></p></li></ul><a id="more"></a><h2 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h2><h3 id="1-Githubにリポジトリを作ります"><a href="#1-Githubにリポジトリを作ります" class="headerlink" title="1. Githubにリポジトリを作ります"></a>1. Githubにリポジトリを作ります</h3><p>公開したいサイトを置くリポジトリを作成します。  </p><p><a href="https://github.com/new" target="_blank" rel="noopener">Create a new repository</a><br>上記リンクで新規リポジトリ作成ページに飛びます。</p><p>「Repository name」にリポジトリ名を入力してください。<br>何でもいいです。<br>今回は「sample-pages」にします。入力が終わったら「Create repository」ボタンを押します。</p><p><img src="/img/2017-05-15-001-001.PNG" alt=""></p><h3 id="2-公開したいサイト（ソースコード）をアップロードします"><a href="#2-公開したいサイト（ソースコード）をアップロードします" class="headerlink" title="2. 公開したいサイト（ソースコード）をアップロードします"></a>2. 公開したいサイト（ソースコード）をアップロードします</h3><p>ブランチ名は「gh-pages」にプッシュしてください。独自ドメインを当てない場合は以上でサイトを公開できます。</p><p>簡単ですね。</p><p>URLはデフォルトでは<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://[Githubアカウント名].github.io/[プロジェクト名]</span><br></pre></td></tr></table></figure></p><p>となります。今回の場合は<a href="http://eiichi-worker.github.io/sample-pages" target="_blank" rel="noopener">http://eiichi-worker.github.io/sample-pages</a></p><h3 id="3-ドメインの設定をする"><a href="#3-ドメインの設定をする" class="headerlink" title="3. ドメインの設定をする"></a>3. ドメインの設定をする</h3><p>DNSの設定とリポジトリに「CNAME」という名前のファイルを置きます。  </p><ol><li><p>DNSの設定をします<br>当てたいドメインのCNAMEに「[Github アカウント名].github.io」を設定してください。</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sample-pages.noraneko.work. CNAME eiichi-worker.github.io</span><br></pre></td></tr></table></figure></li><li><p>リポジトリの直下に「CNAME」という名前のファイルを作り設定したいドメイン名を書き込みます。<br>今回の場合は「sample-pages.noraneko.work」</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sample-pages.noraneko.work</span><br></pre></td></tr></table></figure></li></ol><h2 id="関連リンク"><a href="#関連リンク" class="headerlink" title="関連リンク"></a>関連リンク</h2><ul><li><a href="https://pages.github.com/" target="_blank" rel="noopener">Github Pages 公式</a></li><li><a href="https://help.github.com/articles/using-a-custom-domain-with-github-pages/" target="_blank" rel="noopener">Using a custom domain with GitHub Pages</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;概要&quot;&gt;&lt;a href=&quot;#概要&quot; class=&quot;headerlink&quot; title=&quot;概要&quot;&gt;&lt;/a&gt;概要&lt;/h2&gt;&lt;p&gt;Github Pagesを使いほぼ無料で自分のサイトを公開します。&lt;br&gt;今回は独自ドメインで公開するのでドメイン代がかかりますが、独自ドメインを当てない場合は無料です。&lt;/p&gt;
+&lt;p&gt;Githubには「Github Pages」という、無料のサイトホスティング機能があります。&lt;br&gt;それを使いサイトを公開します。&lt;/p&gt;
+&lt;p&gt;この記事の前提条件です。事前準備をお願いします。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Githubアカウント作成済み&lt;/li&gt;
+&lt;li&gt;当てたいドメイン購入済み&lt;ul&gt;
+&lt;li&gt;ドメイン、DNSの設定ができる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;サイト作成の知識がある&lt;/li&gt;
+&lt;li&gt;Gitに関する知識がある&lt;ul&gt;
+&lt;li&gt;サイトの更新はGitで行います&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;今回作るもの&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;リポジトリ
+&lt;a href=&quot;https://github.com/eiichi-worker/sample-pages&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/eiichi-worker/sample-pages&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;サイト
+&lt;a href=&quot;http://sample-pages.noraneko.work&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://sample-pages.noraneko.work&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="Github Pages" scheme="https://blog.noraneko.work/tags/github-pages/"/>
+    
+      <category term="Github" scheme="https://blog.noraneko.work/tags/github/"/>
+    
+      <category term="サイト公開" scheme="https://blog.noraneko.work/tags/%E3%82%B5%E3%82%A4%E3%83%88%E5%85%AC%E9%96%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MacOS Sierraを開発用にセットアップするメモ</title>
+    <link href="https://blog.noraneko.work/2017-02-27-001/"/>
+    <id>https://blog.noraneko.work/2017-02-27-001/</id>
+    <published>2017-02-26T16:24:25.000Z</published>
+    <updated>2018-06-19T15:11:51.597Z</updated>
+    
+    <content type="html"><![CDATA[<p>個人的にMacをセットアップする際のメモです。</p><h2 id="クリーンインストール"><a href="#クリーンインストール" class="headerlink" title="クリーンインストール"></a>クリーンインストール</h2><ul><li><a href="https://wayohoo.com/mac/tips/how-to-clean-install-macos-sierra.html" target="_blank" rel="noopener">https://wayohoo.com/mac/tips/how-to-clean-install-macos-sierra.html</a></li></ul><h2 id="初期設定"><a href="#初期設定" class="headerlink" title="初期設定"></a>初期設定</h2><ul><li>ファンクションキーを変更  </li><li>capsキーをcommandキーにする</li><li>タッチパッドのクリックを変更  </li><li>ぬるっとしたアニメーションを消す </li><li>（TODO カーソルスピードを上げる）</li><li><p>隠しファイルを表示  <a href="https://pc-karuma.net/mac-finder-show-all-files/" target="_blank" rel="noopener">https://pc-karuma.net/mac-finder-show-all-files/</a></p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.finder AppleShowAllFiles TRUE</span><br><span class="line">killall Finder</span><br></pre></td></tr></table></figure></li><li><p>.bashrcを読み込むようにする（基本的に.bashrcに色々書く）  <a href="http://magonote.skr.jp/bashrc/" target="_blank" rel="noopener">http://magonote.skr.jp/bashrc/</a></p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bash_profile</span><br><span class="line">    if [ -f ~/.bashrc ]; then</span><br><span class="line">        . ~/.bashrc</span><br><span class="line">    fi</span><br><span class="line"></span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure></li><li><p>コマンドにエイリアスを張る  <a href="http://qiita.com/pugiemonn/items/da04a422cc7da548632e" target="_blank" rel="noopener">http://qiita.com/pugiemonn/items/da04a422cc7da548632e</a></p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bashrc</span><br><span class="line">    alias la=&apos;ls -la&apos;</span><br><span class="line">    alias ll=&apos;ls -l&apos;</span><br><span class="line"></span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure></li></ul><a id="more"></a><h2 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h2><ul><li><a href="https://brew.sh/" target="_blank" rel="noopener">https://brew.sh/</a>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure></li></ul><h2 id="homebrew-cask"><a href="#homebrew-cask" class="headerlink" title="homebrew-cask"></a>homebrew-cask</h2><ul><li><a href="https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md" target="_blank" rel="noopener">https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md</a>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap caskroom/cask</span><br><span class="line">brew tap caskroom/homebrew-versions</span><br></pre></td></tr></table></figure></li></ul><h2 id="デスクトップアプリケーション"><a href="#デスクトップアプリケーション" class="headerlink" title="デスクトップアプリケーション"></a>デスクトップアプリケーション</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"># Google系</span><br><span class="line">brew cask install google-chrome</span><br><span class="line">brew cask install google-japanese-ime</span><br><span class="line"></span><br><span class="line"># Macの細かい設定いじるやつ</span><br><span class="line">brew cask install onyx</span><br><span class="line"></span><br><span class="line"># チャットサービスまとめるやつ</span><br><span class="line">brew cask install franz</span><br><span class="line"></span><br><span class="line"># IDE</span><br><span class="line">brew cask install phpstorm</span><br><span class="line">brew cask install pycharm-ce</span><br><span class="line">brew cask install intellij-idea-ce</span><br><span class="line">brew cask install visual-studio-code</span><br><span class="line"></span><br><span class="line"># Git</span><br><span class="line">brew cask install sourcetree</span><br><span class="line"></span><br><span class="line"># MySQLWorkbench  </span><br><span class="line">brew cask install mysqlworkbench</span><br><span class="line"></span><br><span class="line"># Redis</span><br><span class="line">brew cask install medis</span><br><span class="line"></span><br><span class="line"># Redshift</span><br><span class="line">brew cask install postico</span><br><span class="line"></span><br><span class="line"># Tableau</span><br><span class="line">brew cask install tableau</span><br></pre></td></tr></table></figure></code></pre><h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install git</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure></code></pre><h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><ul><li><p>Pyenv</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">brew install pyenv</span><br><span class="line">vi ~/.bashrc</span><br><span class="line">    eval &quot;$(pyenv init -)&quot;</span><br><span class="line"></span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure></li><li><p><a href="http://qiita.com/y__sama/items/5b62d31cb7e6ed50f02c" target="_blank" rel="noopener">http://qiita.com/y__sama/items/5b62d31cb7e6ed50f02c</a></p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pyenv install -l | grep ana</span><br><span class="line">pyenv install anaconda3-4.3.0</span><br><span class="line">pyenv global anaconda3-4.3.0</span><br><span class="line"></span><br><span class="line">python --version</span><br></pre></td></tr></table></figure></li></ul><h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><ul><li><p>nodebrew</p><ul><li><p><a href="https://github.com/hokaccha/nodebrew#install" target="_blank" rel="noopener">https://github.com/hokaccha/nodebrew#install</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -L git.io/nodebrew | perl - setup</span><br><span class="line">vi .bashrc</span><br><span class="line">    export PATH=$HOME/.nodebrew/current/bin:$PATH</span><br><span class="line"></span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nodebrew install-binary v7.x</span><br><span class="line">nodebrew use v7.x</span><br><span class="line"></span><br><span class="line">node -v</span><br></pre></td></tr></table></figure></li></ul></li></ul><h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><ul><li>JDK  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">brew cask install java</span><br><span class="line">vi ~/.bashrc</span><br><span class="line">    export JAVA_HOME=`/usr/libexec/java_home -v 1.8`</span><br><span class="line">    </span><br><span class="line">source ~/.bashrc</span><br><span class="line"></span><br><span class="line">java -version</span><br></pre></td></tr></table></figure></li></ul><h2 id="Scala"><a href="#Scala" class="headerlink" title="Scala"></a>Scala</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew install scala</span><br><span class="line"></span><br><span class="line">scala --version</span><br></pre></td></tr></table></figure></code></pre><h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><ul><li>Docker for mac</li><li><p><a href="http://stangler.hatenablog.com/entry/2016/11/17/141705" target="_blank" rel="noopener">http://stangler.hatenablog.com/entry/2016/11/17/141705</a></p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install docker</span><br></pre></td></tr></table></figure><p>  インストール後にLaunchpadから起動する</p></li></ul><h2 id="Digdag"><a href="#Digdag" class="headerlink" title="Digdag"></a>Digdag</h2><ul><li><a href="https://github.com/treasure-data/digdag" target="_blank" rel="noopener">https://github.com/treasure-data/digdag</a></li><li>Node.js 7系、JDK 1.8系のインストール必須  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install digdag</span><br></pre></td></tr></table></figure></li></ul><h2 id="Embulk"><a href="#Embulk" class="headerlink" title="Embulk"></a>Embulk</h2><ul><li><a href="https://github.com/embulk/embulk" target="_blank" rel="noopener">https://github.com/embulk/embulk</a>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl --create-dirs -o ~/.embulk/bin/embulk -L &quot;http://dl.embulk.org/embulk-latest.jar&quot;</span><br><span class="line">chmod +x ~/.embulk/bin/embulk</span><br><span class="line">echo &apos;export PATH=&quot;$HOME/.embulk/bin:$PATH&quot;&apos; &gt;&gt; ~/.bashrc</span><br><span class="line">source ~/.bashrc</span><br><span class="line"></span><br><span class="line">embulk -v</span><br></pre></td></tr></table></figure></li></ul><h2 id="TreasureData"><a href="#TreasureData" class="headerlink" title="TreasureData"></a>TreasureData</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install td-toolbelt</span><br></pre></td></tr></table></figure></code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;個人的にMacをセットアップする際のメモです。&lt;/p&gt;
+&lt;h2 id=&quot;クリーンインストール&quot;&gt;&lt;a href=&quot;#クリーンインストール&quot; class=&quot;headerlink&quot; title=&quot;クリーンインストール&quot;&gt;&lt;/a&gt;クリーンインストール&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://wayohoo.com/mac/tips/how-to-clean-install-macos-sierra.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://wayohoo.com/mac/tips/how-to-clean-install-macos-sierra.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;初期設定&quot;&gt;&lt;a href=&quot;#初期設定&quot; class=&quot;headerlink&quot; title=&quot;初期設定&quot;&gt;&lt;/a&gt;初期設定&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;ファンクションキーを変更  &lt;/li&gt;
+&lt;li&gt;capsキーをcommandキーにする&lt;/li&gt;
+&lt;li&gt;タッチパッドのクリックを変更  &lt;/li&gt;
+&lt;li&gt;ぬるっとしたアニメーションを消す &lt;/li&gt;
+&lt;li&gt;（TODO カーソルスピードを上げる）&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;隠しファイルを表示  &lt;a href=&quot;https://pc-karuma.net/mac-finder-show-all-files/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://pc-karuma.net/mac-finder-show-all-files/&lt;/a&gt;&lt;/p&gt;
+  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;defaults write com.apple.finder AppleShowAllFiles TRUE&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;killall Finder&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;.bashrcを読み込むようにする（基本的に.bashrcに色々書く）
+  &lt;a href=&quot;http://magonote.skr.jp/bashrc/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://magonote.skr.jp/bashrc/&lt;/a&gt;&lt;/p&gt;
+  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vi ~/.bash_profile&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    if [ -f ~/.bashrc ]; then&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        . ~/.bashrc&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fi&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;source ~/.bash_profile&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;コマンドにエイリアスを張る
+  &lt;a href=&quot;http://qiita.com/pugiemonn/items/da04a422cc7da548632e&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://qiita.com/pugiemonn/items/da04a422cc7da548632e&lt;/a&gt;&lt;/p&gt;
+  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vi ~/.bashrc&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    alias la=&amp;apos;ls -la&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    alias ll=&amp;apos;ls -l&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;source ~/.bashrc&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="Mac" scheme="https://blog.noraneko.work/tags/mac/"/>
+    
+      <category term="セットアップ" scheme="https://blog.noraneko.work/tags/%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97/"/>
+    
+      <category term="環境構築" scheme="https://blog.noraneko.work/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89/"/>
+    
+      <category term="インストール" scheme="https://blog.noraneko.work/tags/%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB/"/>
+    
+      <category term="メモ" scheme="https://blog.noraneko.work/tags/%E3%83%A1%E3%83%A2/"/>
+    
+  </entry>
+  
+</feed>
