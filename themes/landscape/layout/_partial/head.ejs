@@ -35,6 +35,8 @@
   <%- partial('google-analytics') %>
   <meta name="google-site-verification" content="kG_gz2xi42noxcKTmrJ2c3y4Yeq_U1THAd0ZMh__hMM" />
 
+  <%- autoCanonical(config, page) %>
+
   <% if (is_post() && config.generator_amp){ %>
   <link rel="amphtml" href="<%= config.url %>/<%= page.path %>amp/index.html">
   <% } %>
